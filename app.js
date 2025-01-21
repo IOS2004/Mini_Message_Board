@@ -1,8 +1,7 @@
 const express = require('express')
 const path = require('path')
 const app = express();
-const hostname = 'localhost';
-const port = 8080;
+const port = process.env.PORT || 8080;
 const { indexRouter } = require('./routes/indexRoute');
 const messageRouter = require('./routes/messageRoute');
 const detailRouter = require('./routes/detailRoute');
@@ -27,6 +26,6 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke!');
 });
 
-app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}`);
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
 });
