@@ -20,7 +20,7 @@ VALUES
 async function main() {
   console.log("seeding...");
   const client = new Client({
-    connectionString: 'postgresql://mini_message_9er4_user:EG5LQQ7TMMp5TYqGlk1GRel91EBYvYCP@dpg-cuaf4uq3esus73em9aog-a.oregon-postgres.render.com/mini_message_9er4',
+    connectionString: process.env.DB_URI,
     ssl: {
       rejectUnauthorized: true, 
     },
