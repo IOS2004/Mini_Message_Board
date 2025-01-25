@@ -2,9 +2,11 @@ const express = require('express')
 const path = require('path')
 const app = express();
 const port = process.env.PORT || 8080;
+require("dotenv").config();
 const { indexRouter } = require('./routes/indexRoute');
 const messageRouter = require('./routes/messageRoute');
 const detailRouter = require('./routes/detailRoute');
+const { body, validationResult } = require("express-validator");
 
 app.use(express.urlencoded({ extended: true }));
 

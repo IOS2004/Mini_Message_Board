@@ -1,13 +1,16 @@
-const {Router, request} = require('express');
-const { messages } = require('./indexRoute');
+const {Router} = require('express');
+const db = require('../db/queries');
 const messageRouter = Router();
 
-messageRouter.get('/', (req, res) => {
-  const index = req.query.id;
-  if (!index)
+messageRouter.get('/', async (req, res) => {
+  const id = req.query.id;
+  if (!id)
     res.render('detail' , {message : null});
   else
-    res.render('detail', {message : messages[index]});
+  {
+    const message = await db.getMessageById(id);
+    res.render('detail', {message : message});
+  }
 })
 
 module.exports = messageRouter;
